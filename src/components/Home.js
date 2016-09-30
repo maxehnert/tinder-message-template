@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import OSComponent from './OS'
 import MatchName from './MatchName'
 import MatchImage from './MatchImage'
+import Message from './Message'
 
 class Home extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class Home extends Component {
           <OSComponent onChange={this.handleChange} />
           <MatchName onChange={this.handleChange} />
           <MatchImage onChange={this.handleChange} />
+          <Message />
           <button
             type="submit"
             className="btn btn-default">
