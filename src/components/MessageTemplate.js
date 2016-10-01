@@ -27,14 +27,20 @@ class MessageTemplate extends Component {
             </div>
             <div className="phone-status-bar_battery">
               <i className="fa fa-location-arrow" aria-hidden="true"></i>
-              <div>78%</div>
+              <div className="phone-status-bar_battery_percent">78%</div>
               <i className="fa fa-battery-three-quarters" aria-hidden="true"></i>
             </div>
           </div>
           <div className="phone-tinder-nav">
-            <div className="phone-tinder-nav_caret"></div>
+            <div className="phone-tinder-nav_caret">
+              <span className="tinder-chevron"></span>
+            </div>
             <div className="phone-tinder-nav_profile"></div>
-            <div className="phone-tinder-nav_dots"></div>
+            <div className="phone-tinder-nav_dots">
+              <i className="fa fa-circle" aria-hidden="true"></i>
+              <i className="fa fa-circle" aria-hidden="true"></i>
+              <i className="fa fa-circle" aria-hidden="true"></i>
+            </div>
           </div>
           <div className="phone-inner-message-container">
             <div className="phone-inner-message_match-header"></div>

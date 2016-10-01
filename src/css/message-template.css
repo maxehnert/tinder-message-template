@@ -50,3 +50,42 @@
   align-items: center;
   padding-right: 3px;
 }
+
+.phone-tinder-nav {
+  display: flex;
+}
+
+.tinder-chevron {
+  position: relative;
+  color: #333;
+  font-family: Arial sans-serif;
+  font-size: 2em;
+  text-decoration: none;
+  padding: 0.5em 1.5em;
+}
+
+.tinder-chevron:before,
+.tinder-chevron:after {
+  content: "";
+  background: #f16464;
+  border-radius: 0.1em;
+  display: block;
+  height: 0.8em;
+  position: absolute;
+  right: 0;
+  width: 0.2em;
+}
+
+.tinder-chevron:before {
+  transform: rotate(45deg);
+  top: 0.35em;
+}
+
+.tinder-chevron:after {
+  bottom: 0.56em;
+  transform: rotate(-45deg);
+}
+
+.phone-tinder-nav_dots i {
+  color: #f16464;
+}
