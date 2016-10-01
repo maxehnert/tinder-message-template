@@ -1,0 +1,52 @@
+.phone-container {
+  position: relative;
+}
+
+.phone-image {
+  border-radius: 48px;
+  transform: scale(1.2) translateY(10%);
+}
+
+.phone-inner-container {
+  position: absolute;
+  top: 97px;
+  height: 536px;
+  width: 304px;
+  border: 1px solid red;
+  margin: 0 auto;
+  background: white;
+  right: 118px;
+}
+
+.phone-status-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.phone-status-bar_service {
+  display: flex;
+  align-items: center;
+  padding-left: 3px;
+}
+
+.phone-status-bar_provider,
+.phone-status-bar_battery_percent {
+  margin-top: 2px;
+  padding: 0 2px;
+}
+
+.service-circle-sm {
+  font-size: 8px;
+}
+
+.phone-status-bar_time {
+  margin-top: 2px;
+  padding-right: 26px;
+}
+
+.phone-status-bar_battery {
+  display: flex;
+  align-items: center;
+  padding-right: 3px;
+}

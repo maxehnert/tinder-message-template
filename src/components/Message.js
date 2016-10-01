@@ -8,9 +8,9 @@ const Message = (props) => {
         <textarea className="form-control" rows="3"></textarea>
       </div>
       <div className="form-group">
-        <label for="pasteImage" class="col-sm-2 control-label">Add Image</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="pasteImage" placeholder="Paste URL Here" />
+        <label htmlFor="pasteImage" className="col-sm-2 control-label">Add Image</label>
+        <div className="col-sm-10">
+          <input type="text" className="form-control" id="pasteImage" placeholder="Paste URL Here" />
         </div>
       </div>
       <div className="form-group">
