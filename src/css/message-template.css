@@ -51,8 +51,20 @@
   padding-right: 3px;
 }
 
+/* END TOP SERVICE BAR */
+
+/* START TINDER NAVIGATION */
+
 .phone-tinder-nav {
   display: flex;
+  justify-content: space-between;
+  height: 50px;
+  align-items: center;
+  border-bottom: 1px solid #cecece;
+}
+
+.phone-tinder-nav_caret {
+  width: 40px;
 }
 
 .tinder-chevron {
@@ -61,7 +73,8 @@
   font-family: Arial sans-serif;
   font-size: 2em;
   text-decoration: none;
-  padding: 0.5em 1.5em;
+  /*padding: 0.5em 1.5em;*/
+  padding: 0 0.1em;
 }
 
 .tinder-chevron:before,
@@ -77,15 +90,34 @@
 }
 
 .tinder-chevron:before {
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
   top: 0.35em;
 }
 
 .tinder-chevron:after {
-  bottom: 0.56em;
-  transform: rotate(-45deg);
+  /*bottom: 0.56em;*/
+  bottom: 0.36em;
+  transform: rotate(45deg);
 }
 
+.phone-tinder-nav_profile {
+  display: flex;
+  align-items: center;
+}
+
+.phone-tinder-nav_profile-img {
+  width: 40px;
+  height: 40px;
+}
+
+.phone-tinder-nav_profile-name {
+  padding-left: 7px;
+}
+
+.phone-tinder-nav_dots {
+  padding-right: 10px;
+}
 .phone-tinder-nav_dots i {
   color: #f16464;
+  padding-right: 3px;
 }

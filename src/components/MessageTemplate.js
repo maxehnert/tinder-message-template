@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import iphone7_white from '../images/iphone7_white.jpg'
+import face_pic from '../images/pexels-photo-2.jpeg'
 import '../css/message-template.css'
 
 class MessageTemplate extends Component {
@@ -35,7 +36,10 @@ class MessageTemplate extends Component {
             <div className="phone-tinder-nav_caret">
               <span className="tinder-chevron"></span>
             </div>
-            <div className="phone-tinder-nav_profile"></div>
+            <div className="phone-tinder-nav_profile">
+              <img src={face_pic} className="img-circle img-responsive phone-tinder-nav_profile-img" />
+              <div className="phone-tinder-nav_profile-name">my Name</div>
+            </div>
             <div className="phone-tinder-nav_dots">
               <i className="fa fa-circle" aria-hidden="true"></i>
               <i className="fa fa-circle" aria-hidden="true"></i>
