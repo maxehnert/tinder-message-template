@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import SortableComponent from './SortableComponent'
 import iphone7_white from '../images/iphone7_white.jpg'
-import face_pic from '../images/pexels-photo-2.jpeg'
+import girl_1 from '../images/pexels-photo-2.jpeg'
 import '../css/message-template.css'
 
 class MessageTemplate extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props);
   }
 
   render() {
-    console.log('messagetemplate render props', ...this.props);
+    // console.log('messagetemplate render props',this.props);
+    const matchName = this.props.messagesObj.matchName
+    const matchImage = this.props.messagesObj.matchImage
+
     return (
       <div className="phone-container">
         <img src={iphone7_white} className="phone-image"/>
@@ -40,8 +42,8 @@ class MessageTemplate extends Component {
               <span className="tinder-chevron"></span>
             </div>
             <div className="phone-tinder-nav_profile">
-              <img src={face_pic} className="img-circle img-responsive phone-tinder-nav_profile-img" />
-              <div className="phone-tinder-nav_profile-name">my Name</div>
+              <img src={matchImage || girl_1} className="img-circle img-responsive phone-tinder-nav_profile-img" />
+              <div className="phone-tinder-nav_profile-name">{matchName || "my name"}</div>
             </div>
             <div className="phone-tinder-nav_dots">
               <i className="fa fa-circle" aria-hidden="true"></i>
@@ -51,7 +53,7 @@ class MessageTemplate extends Component {
           </div>
           <div className="phone-inner-message-container">
             <SortableComponent messages={this.props.messagesObj}/>
-            <div className="phone-inner-message_match-header"></div>
+            {/* <div className="phone-inner-message_match-header"></div> */}
           </div>
           <div className="phone-send-message-container">
             <div className="phone-send-message_gif"></div>

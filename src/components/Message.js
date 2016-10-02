@@ -5,7 +5,14 @@ const Message = (props) => {
     <div>
       <div className="form-group">
         <label htmlFor="matchName" className="col-sm-2 control-label">Message</label>
-        <textarea className="form-control" rows="3" name="messageContents" onChange={props.onChange} ></textarea>
+        <textarea
+          className="form-control"
+          rows="3"
+          name="messageContents"
+          placeholder="Enter Your Message"
+          required
+          value={props.value.messageContents}
+          onChange={props.onChange} />
       </div>
       <div className="form-group">
         <label htmlFor="pasteImage" className="col-sm-2 control-label">Add Image</label>
@@ -15,10 +22,24 @@ const Message = (props) => {
       </div>
       <div className="form-group">
         <label className="radio-inline">
-          <input type="radio" name="messageSenderReceiver" id="MSR1" value="to" onChange={props.onChange} /> To
+          <input
+            type="radio"
+            name="messageSenderReceiver"
+            id="MSR1"
+            required
+            value="to"
+            onChange={props.onChange} />
+          To
         </label>
         <label className="radio-inline">
-          <input type="radio" name="messageSenderReceiver" id="MSR1" value="from" onChange={props.onChange} /> From
+          <input
+            type="radio"
+            name="messageSenderReceiver"
+            id="MSR1"
+            required
+            value="from"
+            onChange={props.onChange} />
+          From
         </label>
       </div>
     </div>

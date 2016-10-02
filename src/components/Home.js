@@ -15,31 +15,41 @@ class Home extends Component {
 
   componentWillMount() {
     this.setState({
-      // OSType: "",
-      // matchImage: "",
-      // matchName: "",
-      // phoneBatteryPercent: "",
-      // phoneSignalStrength: "",
-      // phoneServiceProvider: "",
+      OSType: "",
+      matchImage: "",
+      matchName: "",
+      messageContents: "",
+      phoneBatteryPercent: "",
+      phoneSignalStrength: "",
+      phoneServiceProvider: "",
       messages: []
     })
   }
 
   handleChange(event) {
     console.log(event.target.name,event.target.value);
-    // this.setState({
-    //   [event.target.name]: event.target.value
-    // })
+    this.setState({
+      [event.target.name]: event.target.value
+    })
     this.messageConstructor[event.target.name] = event.target.value
   }
 
   handleSubmit(event) {
     event.preventDefault()
-    console.log('submit event', event, event.target);
+    // console.log('submit event', event, event.target);
 
     this.state.messages.push(this.messageConstructor)
     var newMsgArr = this.state.messages
-    this.setState({messages: newMsgArr})
+    this.setState({
+      // OSType: "",
+      // matchImage: "",
+      // matchName: "",
+      messageContents: "",
+      // phoneBatteryPercent: "",
+      // phoneSignalStrength: "",
+      // phoneServiceProvider: "",
+      messages: newMsgArr
+    })
     this.messageConstructor = {};
 
 // console.log('state', this.state);
@@ -49,12 +59,11 @@ class Home extends Component {
   render() {
     return (
       <div className="row container">
-        <div>cooool</div>
         <form className="col-sm-12 col-md-6" onSubmit={this.handleSubmit}>
           <OSComponent onChange={this.handleChange} />
-          <MatchName onChange={this.handleChange} />
-          <MatchImage onChange={this.handleChange} />
-          <Message />
+          <MatchName value={this.state} onChange={this.handleChange} />
+          <MatchImage value={this.state} onChange={this.handleChange} />
+          <Message value={this.state} onChange={this.handleChange} />
           <button
             type="submit"
             className="btn btn-default">

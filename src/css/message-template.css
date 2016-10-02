@@ -121,3 +121,21 @@
   color: #f16464;
   padding-right: 3px;
 }
+
+/* END TINDER NAVIGATION */
+
+/* START TINDER MESSAGE CONTAINER */
+
+.phone-inner-message-container {
+
+}
+
+.phone-inner-message-container ul {
+  padding: 0;
+}
+
+.message-list-item {
+  list-style: none;
+  text-align: left;
+  white-space: pre-wrap;
+}

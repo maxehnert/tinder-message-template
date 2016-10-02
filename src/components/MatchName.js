@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MatchName = (props) => {
-
   return (
     <div>
       <div className="form-group">
@@ -11,11 +10,14 @@ const MatchName = (props) => {
             type="text"
             className="form-control"
             id="matchName"
-            placeholder="Match Name"
+            placeholder="Your Match's Name"
             name="matchName"
+            maxLength="18"
+            required
+            value={props.value.matchName}
             onChange={props.onChange} />
         </div>
-        </div>
+      </div>
     </div>
   )
 }
