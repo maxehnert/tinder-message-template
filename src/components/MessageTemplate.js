@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
+import SortableComponent from './SortableComponent'
 import iphone7_white from '../images/iphone7_white.jpg'
 import face_pic from '../images/pexels-photo-2.jpeg'
 import '../css/message-template.css'
 
 class MessageTemplate extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    console.log(this.props);
   }
 
   render() {
+    console.log('messagetemplate render props', ...this.props);
     return (
       <div className="phone-container">
         <img src={iphone7_white} className="phone-image"/>
@@ -47,6 +50,7 @@ class MessageTemplate extends Component {
             </div>
           </div>
           <div className="phone-inner-message-container">
+            <SortableComponent messages={this.props.messagesObj}/>
             <div className="phone-inner-message_match-header"></div>
           </div>
           <div className="phone-send-message-container">

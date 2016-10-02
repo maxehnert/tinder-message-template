@@ -5,7 +5,7 @@ const Message = (props) => {
     <div>
       <div className="form-group">
         <label htmlFor="matchName" className="col-sm-2 control-label">Message</label>
-        <textarea className="form-control" rows="3"></textarea>
+        <textarea className="form-control" rows="3" name="messageContents" onChange={props.onChange} ></textarea>
       </div>
       <div className="form-group">
         <label htmlFor="pasteImage" className="col-sm-2 control-label">Add Image</label>

@@ -9,28 +9,41 @@ class Home extends Component {
   constructor(props) {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
-
+    this.handleChange = this.handleChange.bind(this)
+    this.messageConstructor = {}
   }
 
   componentWillMount() {
     this.setState({
-      OSType: "",
-      matchImage: "",
-      matchName: "",
-      phoneBatteryPercent: "",
-      phoneSignalStrength: "",
-      phoneServiceProvider: "",
+      // OSType: "",
+      // matchImage: "",
+      // matchName: "",
+      // phoneBatteryPercent: "",
+      // phoneSignalStrength: "",
+      // phoneServiceProvider: "",
       messages: []
     })
   }
 
   handleChange(event) {
-    console.log(event.target.value);
+    console.log(event.target.name,event.target.value);
+    // this.setState({
+    //   [event.target.name]: event.target.value
+    // })
+    this.messageConstructor[event.target.name] = event.target.value
   }
 
   handleSubmit(event) {
     event.preventDefault()
     console.log('submit event', event, event.target);
+
+    this.state.messages.push(this.messageConstructor)
+    var newMsgArr = this.state.messages
+    this.setState({messages: newMsgArr})
+    this.messageConstructor = {};
+
+// console.log('state', this.state);
+// console.log('messageConstructor', this.messageConstructor);
   }
 
   render() {
@@ -49,7 +62,7 @@ class Home extends Component {
           </button>
         </form>
         <div className="col-sm-12 col-md-6">
-          <MessageTemplate />
+          <MessageTemplate messagesObj={this.state} />
         </div>
       </div>
     )
