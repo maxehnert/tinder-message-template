@@ -19,5 +19,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "http://maxehnert.github.io/tinder-message-template"
+  "homepage": "https://maxehnert.github.io/tinder-message-template"
 }
