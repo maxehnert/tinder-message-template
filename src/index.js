@@ -22,5 +22,5 @@ import './css/index.css';
 // ),document.getElementById('root'));
 
 render((
-  <Home />
+  <App />
 ), document.getElementById('root'))
