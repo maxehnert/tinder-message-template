@@ -18,11 +18,11 @@ const SortableItem = SortableElement(({value}) => {
 
 const SortableList = SortableContainer(({messages}) => {
   return (
-    <ul>
+    <div className="sortable-list">
       {messages.map((value, index) =>
         <SortableItem key={`item-${index}`} index={index} value={value} />
       )}
-    </ul>
+    </div>
   );
 });
 

@@ -51,14 +51,22 @@ class MessageTemplate extends Component {
               <i className="fa fa-circle" aria-hidden="true"></i>
             </div>
           </div>
-          <div className="phone-inner-message-container">
-            <SortableComponent messages={this.props.messagesObj}/>
-            {/* <div className="phone-inner-message_match-header"></div> */}
-          </div>
+          {/* <div className="phone-inner-message-container"> */}
+          <SortableComponent messages={this.props.messagesObj} className="phone-inner-message-container"/>
+          {/* <div className="phone-inner-message_match-header"></div> */}
+          {/* </div> */}
           <div className="phone-send-message-container">
-            <div className="phone-send-message_gif"></div>
-            <div className="phone-send-message_text-input"></div>
-            <div className="phone-send-message_send-btn"></div>
+            <div className="phone-send-message_gif">
+              <div className="phone-send-message_gif-icon">
+                <span>GIF</span>
+              </div>
+            </div>
+            <div className="phone-send-message_text-input">
+              <span>Type A Message...</span>
+            </div>
+            <div className="phone-send-message_send-btn">
+              <span>SEND</span>
+            </div>
           </div>
         </div>
       </div>

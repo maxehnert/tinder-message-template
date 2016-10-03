@@ -127,11 +127,23 @@
 /* START TINDER MESSAGE CONTAINER */
 
 .phone-inner-message-container {
-
+  height: 416px;
+  overflow-y: scroll;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
 }
 
 .phone-inner-message-container ul {
   padding: 0;
+}
+
+.sortable-list {
+  width: 100%;
+height: 415px;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
 }
 
 .message-list-item {
@@ -155,7 +167,7 @@
  padding: 8px 12px;
  box-sizing: border-box;
  border-radius: 10px;
- font-size: 16px;
+ font-size: 14px;
 }
 
 .message-list-item_from {
@@ -165,8 +177,44 @@
 }
 
 .message-list-item_to {
-  width: 286px;
+  width: 200px;
+  margin-left: 74px;
   background-color: #2EB1C9;
-   color: #FFF;
-   float: right;
+  color: #FFF;
+}
+
+
+/* START SEND MESSAGE INPUT */
+
+.phone-send-message-container {
+  height: 50px;
+  background: #FFF;
+  border-top: 1px solid #cecece;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.phone-send-message_gif {
+  height: 35px;
+  width: 40px;
+  background-color: #2EB1C9;
+  color: #FFF;
+  border-radius: 23%;
+}
+
+.phone-send-message_gif-icon {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-send-message_text-input {
+  color: #909090;
+  padding-right: 35px;
+}
+
+.phone-send-message_send-btn {
+  color: #909090;
 }
