@@ -5,6 +5,9 @@ import MatchImage from './MatchImage'
 import Message from './Message'
 import MessageTemplate from './MessageTemplate'
 
+import girl_1 from '../images/pexels-photo-2.jpeg'
+
+
 class Home extends Component {
   constructor(props) {
     super()
@@ -16,18 +19,19 @@ class Home extends Component {
   componentWillMount() {
     this.setState({
       OSType: "",
-      matchImage: "",
+      matchImage: girl_1,
       matchName: "",
       messageContents: "",
       phoneBatteryPercent: "",
       phoneSignalStrength: "",
       phoneServiceProvider: "",
+      messageSenderReceiver: "",
       messages: []
     })
   }
 
   handleChange(event) {
-    // console.log(event.target.name,event.target.value);
+    console.log(event.target.name,event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -37,12 +41,17 @@ class Home extends Component {
   handleSubmit(event) {
     event.preventDefault()
     // console.log('submit event', event, event.target);
+    var matchImage = !this.messageConstructor.matchImage ? this.state.matchImage : this.messageConstructor.matchImage
+    var messageSenderReceiver = !this.messageConstructor.messageSenderReceiver ? this.state.messageSenderReceiver : this.messageConstructor.messageSenderReceiver
+    this.messageConstructor.matchImage = matchImage
+    this.messageConstructor.messageSenderReceiver = messageSenderReceiver
 
     this.state.messages.push(this.messageConstructor)
     var newMsgArr = this.state.messages
+
     this.setState({
       // OSType: "",
-      // matchImage: "",
+      matchImage: matchImage,
       // matchName: "",
       messageContents: "",
       // phoneBatteryPercent: "",
@@ -50,6 +59,7 @@ class Home extends Component {
       // phoneServiceProvider: "",
       messages: newMsgArr
     })
+
     this.messageConstructor = {};
 
 // console.log('state', this.state);
@@ -71,7 +81,7 @@ class Home extends Component {
           </button>
         </form>
         <div className="col-sm-12 col-md-6">
-          <MessageTemplate messagesObj={this.state} />
+          <MessageTemplate value={this.state} />
         </div>
       </div>
     )
