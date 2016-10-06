@@ -14,6 +14,13 @@ const MatchImage = (props) => {
         <option value={guy_1}>guy 1</option>
         <option value={guy_2}>guy 2</option>
       </select>
+
+      {/* <ul class="list-group">
+        <li class="list-group-item" value={girl_1}> girl 1</li>
+        <li class="list-group-item" value={girl_2}>girl 2</li>
+        <li class="list-group-item" value={guy_1}>guy 1</li>
+        <li class="list-group-item" value={guy_2}>guy 2</li>
+      </ul> */}
     </div>
   )
 }

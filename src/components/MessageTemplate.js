@@ -10,9 +10,9 @@ class MessageTemplate extends Component {
   }
 
   render() {
-    // console.log('messagetemplate render props',this.props);
-    const matchName = this.props.messagesObj.matchName
-    const matchImage = this.props.messagesObj.matchImage
+    console.log('messagetemplate render props',this.props);
+    const matchName = this.props.value.matchName
+    const matchImage = this.props.value.matchImage
 
     return (
       <div className="phone-container">
@@ -52,7 +52,7 @@ class MessageTemplate extends Component {
             </div>
           </div>
           {/* <div className="phone-inner-message-container"> */}
-          <SortableComponent messages={this.props.messagesObj} className="phone-inner-message-container"/>
+          <SortableComponent messages={this.props} className="phone-inner-message-container"/>
           {/* <div className="phone-inner-message_match-header"></div> */}
           {/* </div> */}
           <div className="phone-send-message-container">
