@@ -1,9 +1,22 @@
 ## Tinder Card Generator
 
-Quickly create a Tinder conversation 
+Quickly create a Tinder conversation
 
 
 IGNORE BELOW THIS LINE. ALL BOILER PLATE FROM create-react-app
+
+Things still TODO:
+
+* create canvas image of conversation, then convert to Base64
+* AJAX calls to imgur/twitter/fb/download etc to export the image to social media
+* buttons for those calls
+* add delete function to messages
+* need to create the Android interface
+* fix issue with profile image needing to be clicked every time
+* allow users to add their own images
+* add an emoji picker
+* style the form
+* lastly, buy a real domain for this
 
 --------------
 
