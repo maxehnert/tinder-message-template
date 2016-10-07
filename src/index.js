@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute, IndexRedirect, hashHistory } from 'react-router'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
-// import App from './components/App';
-// import Home from './components/Home';
 import { App, Home } from './components/index'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -21,6 +21,10 @@ import './css/index.css';
 //   </Router>
 // ),document.getElementById('root'));
 
+const store = createStore(reducer)
+
 render((
-  <App />
+  <Provider store={store}>
+    <App />
+  </Provider>
 ), document.getElementById('root'))
