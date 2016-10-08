@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute, IndexRedirect, hashHistory } from 'react-router'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import reducer from './reducers'
 
 import { App, Home } from './components/index'
 
