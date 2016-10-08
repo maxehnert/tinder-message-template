@@ -10,7 +10,7 @@ class MessageTemplate extends Component {
   }
 
   render() {
-    console.log('messagetemplate render props',this.props);
+    // console.log('messagetemplate render props',this.props);
     const matchName = this.props.value.matchName
     const matchImage = this.props.value.matchImage
 
