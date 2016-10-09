@@ -42,10 +42,11 @@ class SortableComponent extends Component {
 
   onSortEnd({oldIndex, newIndex}) {
     if (oldIndex !== newIndex) {
-console.log('onSortEnd ', this.state);
-      let messages = this.state.messages.value.messages
+      console.log('oldIndex', oldIndex, ' newIndex ', newIndex);
+console.log('onSortEnd', this.props, 'state', this.state);
+      let messages = this.props.messages
 
-      this.state.messages.value.messages = arrayMove(messages, oldIndex, newIndex)
+      this.state.messages = arrayMove(messages, oldIndex, newIndex)
       let updatedStateMessages = this.state.messages
 
       this.setState({
@@ -58,8 +59,18 @@ console.log('onSortEnd ', this.state);
     // console.log('onDelete', event, args, key);
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('componentWillReceiveProps ', nextProps);
+    this.setState({
+      messages: nextProps.messages
+    })
+
+  }
+
   render() {
+    console.log('SortableComponent props', this.props);
     const { messages, profileImage } = this.props;
+    // let messagesArr = this.state.messages.value.messages
     return (
       <SortableList messages={messages} onSortEnd={this.onSortEnd} profileImage={profileImage} onDeleteItem={this.onDelete} />
     )
@@ -72,3 +83,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(SortableComponent)
+
+// export default SortableComponent
