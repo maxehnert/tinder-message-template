@@ -10,3 +10,9 @@ export const addMessage = (value) => ({
   messageContents: value.messageContents,
   messageSenderReceiver: value.messageSenderReceiver
 })
+
+export const deleteMessage = (value, index) => ({
+  type: 'DELETE_MESSAGE',
+  id: value.id,
+  index: index
+})

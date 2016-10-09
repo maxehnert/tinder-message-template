@@ -13,6 +13,7 @@ Things still TODO:
 * add delete function to messages
 * need to create the Android interface
 * ~~fix issue with profile image needing to be clicked every time~~
+* ~~change all images when selecting a new one~~
 * allow users to add their own images
 * add an emoji picker
 * style the form

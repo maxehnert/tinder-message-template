@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import SortableComponent from './SortableComponent'
+import SortableMessageComponent from './SortableMessageComponents/SortableMessageComponent'
 import iphone7_white from '../images/iphone7_white.jpg'
 import girl_1 from '../images/pexels-photo-2.jpeg'
 import '../css/message-template.css'
@@ -51,11 +51,7 @@ class MessageTemplate extends Component {
               <i className="fa fa-circle" aria-hidden="true"></i>
             </div>
           </div>
-          {/* <div className="phone-inner-message-container"> */}
-          {/* <SortableComponent messages={this.props} className="phone-inner-message-container"/> */}
-          <SortableComponent className="phone-inner-message-container"/>
-          {/* <div className="phone-inner-message_match-header"></div> */}
-          {/* </div> */}
+          <SortableMessageComponent className="phone-inner-message-container"/>
           <div className="phone-send-message-container">
             <div className="phone-send-message_gif">
               <div className="phone-send-message_gif-icon">

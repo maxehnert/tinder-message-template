@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({value, profileImage}) => {
+import{ deleteMessage } from '../actions'
+
+const SortableMessageItem = SortableElement(({value, profileImage, onDelete, index}) => {
   const { messageContents, messageSenderReceiver } = value
 
   return (
@@ -12,29 +13,33 @@ const SortableItem = SortableElement(({value, profileImage}) => {
       <div className={messageSenderReceiver === 'from' ? 'message-list-item-inner message-list-item_from' : 'message-list-item-inner message-list-item_to' }>
         {messageContents}
       </div>
-      <button>DELETE</button>
+      <button onClick={onDelete(index, value)}>DELETE</button>
     </li>
   )
 });
 
-const SortableList = SortableContainer(({messages,onDeleteItem, profileImage}) => {
+const SortableMessageList = SortableContainer(({messages, onDelete, profileImage}) => {
   return (
     <div className="sortable-list">
       {messages.map((value, index) =>
-        <SortableItem key={`item-${index}`} index={index} value={value} profileImage={profileImage} onClick={onDeleteItem} />
+        <SortableMessageItem
+          key={`item-${index}`}
+          index={index}
+          value={value}
+          profileImage={profileImage}
+          onDelete={onDelete}
+        />
       )}
     </div>
   );
 });
 
-class SortableComponent extends Component {
+class SortableMessageComponent extends Component {
   constructor(props) {
     super(props)
 
-    this.state = this.props
-
     this.onSortEnd = this.onSortEnd.bind(this)
-    this.onDelete = this.onDelete.bind(this)
+    // this.onDelete = this.onDelete.bind(this)
   }
 
   onSortEnd({oldIndex, newIndex}) {
@@ -47,9 +52,9 @@ class SortableComponent extends Component {
     }
   }
 
-  onDelete(event, args, key) {
-    // console.log('onDelete', event, args, key);
-  }
+  // onDelete(event, args, key) {
+  //   // console.log('onDelete', event, args, key);
+  // }
 
   componentWillReceiveProps(nextProps) {
     console.log('componentWillReceiveProps ', nextProps);
@@ -60,11 +65,15 @@ class SortableComponent extends Component {
   }
 
   render() {
-    console.log('SortableComponent props', this.props);
-    const { messages, profileImage } = this.props;
-    // let messagesArr = this.state.messages.value.messages
+    const { messages, profileImage, onDelete } = this.props;
+
     return (
-      <SortableList messages={messages} onSortEnd={this.onSortEnd} profileImage={profileImage} onDeleteItem={this.onDelete} />
+      <SortableMessageList
+        messages={messages}
+        onSortEnd={this.onSortEnd}
+        profileImage={profileImage}
+        onDelete={onDelete}
+      />
     )
   }
 }
@@ -74,6 +83,12 @@ const mapStateToProps = (state) => ({
   profileImage: state.profileImage
 })
 
-export default connect(mapStateToProps)(SortableComponent)
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onDelete: (index, messages) => {
+    // console.log('dispatch mapDispatchToProps', dispatch);
+    console.log('ownProps mapDispatchToProps', ownProps, ' param ', index, messages)
+    // dispatch(deleteMessage(messages, index))
+  }
+})
 
-// export default SortableComponent
+export default connect(mapStateToProps, mapDispatchToProps)(SortableMessageComponent)
