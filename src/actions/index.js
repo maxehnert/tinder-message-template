@@ -1,5 +1,12 @@
-
-export const profileImage = (image) => ({
+export const profileImage = (value) => ({
   type: 'SET_PROFILE_IMAGE',
-  image
+  value
+})
+
+let nextTodoId = 0
+export const addMessage = (value) => ({
+  type: 'ADD_MESSAGE',
+  id: nextTodoId++,
+  messageContents: value.messageContents,
+  messageSenderReceiver: value.messageSenderReceiver
 })

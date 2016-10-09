@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import OSComponent from './OS'
 import MatchName from './MatchName'
 import MatchImage from './MatchImage'
 import Message from './Message'
 import MessageTemplate from './MessageTemplate'
+import { profileImage, addMessage } from '../actions'
 
 import girl_1 from '../images/pexels-photo-2.jpeg'
 
 
 class Home extends Component {
   constructor(props) {
-    super()
+    super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.messageConstructor = {}
@@ -31,7 +33,7 @@ class Home extends Component {
   }
 
   handleChange(event) {
-    console.log(event.target.name,event.target.value);
+    // console.log(event.target.name,event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -60,6 +62,9 @@ class Home extends Component {
       messages: newMsgArr
     })
 
+    this.props.dispatch(addMessage(this.messageConstructor))
+    this.props.dispatch(profileImage(matchImage))
+
     this.messageConstructor = {};
 
 // console.log('state', this.state);
@@ -87,5 +92,7 @@ class Home extends Component {
     )
   }
 }
+
+Home = connect()(Home)
 
 export default Home;

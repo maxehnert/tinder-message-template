@@ -52,7 +52,8 @@ class MessageTemplate extends Component {
             </div>
           </div>
           {/* <div className="phone-inner-message-container"> */}
-          <SortableComponent messages={this.props} className="phone-inner-message-container"/>
+          {/* <SortableComponent messages={this.props} className="phone-inner-message-container"/> */}
+          <SortableComponent className="phone-inner-message-container"/>
           {/* <div className="phone-inner-message_match-header"></div> */}
           {/* </div> */}
           <div className="phone-send-message-container">
