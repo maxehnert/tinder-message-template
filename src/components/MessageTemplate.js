@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import SortableComponent from './SortableComponent'
 import iphone7_white from '../images/iphone7_white.jpg'
 import girl_1 from '../images/pexels-photo-2.jpeg'
@@ -10,9 +11,8 @@ class MessageTemplate extends Component {
   }
 
   render() {
-    // console.log('messagetemplate render props',this.props);
     const matchName = this.props.value.matchName
-    const matchImage = this.props.value.matchImage
+    const profileImage = this.props.profileImage
 
     return (
       <div className="phone-container">
@@ -42,7 +42,7 @@ class MessageTemplate extends Component {
               <span className="tinder-chevron"></span>
             </div>
             <div className="phone-tinder-nav_profile">
-              <img src={matchImage || girl_1} className="img-circle img-responsive phone-tinder-nav_profile-img" />
+              <img src={profileImage || girl_1} className="img-circle img-responsive phone-tinder-nav_profile-img" />
               <div className="phone-tinder-nav_profile-name">{matchName || "my name"}</div>
             </div>
             <div className="phone-tinder-nav_dots">
@@ -75,4 +75,8 @@ class MessageTemplate extends Component {
   }
 }
 
-export default MessageTemplate
+const mapStateToProps = (state) => ({
+  profileImage: state.profileImage
+})
+
+export default connect(mapStateToProps)(MessageTemplate)
