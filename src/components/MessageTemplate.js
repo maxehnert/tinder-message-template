@@ -6,9 +6,9 @@ import girl_1 from '../images/pexels-photo-2.jpeg'
 import '../css/message-template.css'
 
 class MessageTemplate extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   render() {
     const matchName = this.props.value.matchName
@@ -16,7 +16,7 @@ class MessageTemplate extends Component {
 
     return (
       <div className="phone-container">
-        <img src={iphone7_white} className="phone-image"/>
+        <img src={iphone7_white} className="phone-image" role="presentation" />
         <div className="phone-inner-container">
           <div className="phone-status-bar">
             <div className="phone-status-bar_service">
@@ -42,7 +42,7 @@ class MessageTemplate extends Component {
               <span className="tinder-chevron"></span>
             </div>
             <div className="phone-tinder-nav_profile">
-              <img src={profileImage || girl_1} className="img-circle img-responsive phone-tinder-nav_profile-img" />
+              <img src={profileImage || girl_1} className="img-circle img-responsive phone-tinder-nav_profile-img" alt="profile" />
               <div className="phone-tinder-nav_profile-name">{matchName || "my name"}</div>
             </div>
             <div className="phone-tinder-nav_dots">

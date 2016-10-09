@@ -8,8 +8,8 @@ const SortableItem = SortableElement(({value, profileImage}) => {
 
   return (
     <li className="message-list-item">
-      {messageSenderReceiver == 'from' ? <img src={profileImage} className="img-circle message-list-item_img" /> : null}
-      <div className={messageSenderReceiver == 'from' ? 'message-list-item-inner message-list-item_from' : 'message-list-item-inner message-list-item_to' }>
+      {messageSenderReceiver === 'from' ? <img src={profileImage} className="img-circle message-list-item_img" alt="profile" /> : null}
+      <div className={messageSenderReceiver === 'from' ? 'message-list-item-inner message-list-item_from' : 'message-list-item-inner message-list-item_to' }>
         {messageContents}
       </div>
       <button>DELETE</button>
@@ -18,9 +18,6 @@ const SortableItem = SortableElement(({value, profileImage}) => {
 });
 
 const SortableList = SortableContainer(({messages,onDeleteItem, profileImage}) => {
-  const deleteNode = (event, args) => {
-    // console.log('deleteNode', event, args);
-  }
   return (
     <div className="sortable-list">
       {messages.map((value, index) =>
@@ -42,15 +39,10 @@ class SortableComponent extends Component {
 
   onSortEnd({oldIndex, newIndex}) {
     if (oldIndex !== newIndex) {
-      console.log('oldIndex', oldIndex, ' newIndex ', newIndex);
-console.log('onSortEnd', this.props, 'state', this.state);
       let messages = this.props.messages
 
-      this.state.messages = arrayMove(messages, oldIndex, newIndex)
-      let updatedStateMessages = this.state.messages
-
       this.setState({
-        messages : updatedStateMessages
+        messages : arrayMove(messages, oldIndex, newIndex)
       });
     }
   }

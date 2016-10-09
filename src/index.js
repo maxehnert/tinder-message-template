@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory, IndexRoute, IndexRedirect, hashHistory } from 'react-router'
+// import { Router, Route, browserHistory, IndexRoute, IndexRedirect, hashHistory } from 'react-router'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 
-import { App, Home } from './components/index'
+import { App } from './components/index'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import './css/index.css';

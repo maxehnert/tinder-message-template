@@ -3,10 +3,7 @@ import Home from './Home'
 import '../css/App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-
-  }
+  
   render() {
     return (
       <div className="App">
