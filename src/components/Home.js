@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import html2canvas from 'html2canvas'
 import OSComponent from './OS'
 import MatchName from './MatchName'
 import MatchImage from './MatchImage'
@@ -15,6 +16,7 @@ class Home extends Component {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.renderImage = this.renderImage.bind(this)
     this.messageConstructor = {}
   }
 
@@ -71,6 +73,14 @@ class Home extends Component {
 // console.log('messageConstructor', this.messageConstructor);
   }
 
+  renderImage(event) {
+    const messageList = document.querySelector('.phone-inner-container')
+
+    html2canvas(messageList).then(function(canvas) {
+      document.body.appendChild(canvas);
+    });
+  }
+
   render() {
     return (
       <div className="row container">
@@ -85,6 +95,7 @@ class Home extends Component {
             Add Message
           </button>
         </form>
+        <button onClick={this.renderImage}>Make Image</button>
         <div className="col-sm-12 col-md-6">
           <MessageTemplate value={this.state} />
         </div>
