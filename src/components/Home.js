@@ -86,14 +86,14 @@ class Home extends Component {
   render() {
     return (
       <div className="row container">
-        <form className="col-sm-12 col-md-6" onSubmit={this.handleSubmit}>
-          <OSComponent onChange={this.handleChange} />
+        <form className="col-sm-12 col-md-4 message-form" onSubmit={this.handleSubmit}>
+          {/* <OSComponent onChange={this.handleChange} /> */}
           <MatchName value={this.state} onChange={this.handleChange} />
           <MatchImage value={this.state} onChange={this.handleChange} />
           <Message value={this.state} onChange={this.handleChange} />
           <button
             type="submit"
-            className="btn btn-default">
+            className="btn btn-success">
             Add Message
           </button>
         </form>

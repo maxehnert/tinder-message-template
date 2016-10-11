@@ -3,9 +3,9 @@ import React from 'react'
 const OSComponent = (props) => {
   return (
     <div className="form-group">
-      <div>
-        <h3>OS Type</h3>
-      </div>
+      <label className="col-sm-12 control-label">
+        OS Type
+      </label>
       <label className="radio-inline">
         <input type="radio" name="OSType" id="OSRadio1" value="android" onChange={props.onChange} /> Android
       </label>

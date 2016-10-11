@@ -4,8 +4,8 @@ const MatchName = (props) => {
   return (
     <div>
       <div className="form-group">
-        <label htmlFor="matchName" className="col-sm-2 control-label">Name</label>
-        <div className="col-sm-10">
+        <label htmlFor="matchName" className="col-sm-12 control-label">Name</label>
+        <div className="">
           <input
             type="text"
             className="form-control"
