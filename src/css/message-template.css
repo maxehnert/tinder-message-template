@@ -60,20 +60,31 @@
   justify-content: space-between;
   height: 50px;
   align-items: center;
-  border-bottom: 1px solid #cecece;
+  padding-top: 10px;
 }
 
 .phone-tinder-nav_caret {
   width: 40px;
 }
 
+.tinder-chevron,
+.tinder-flag {
+  height: 30px;
+}
+
 .tinder-chevron {
+  padding-left: 5px;
+}
+
+.tinder-flag {
+  padding-right: 5px;
+}
+/* .tinder-chevron {
   position: relative;
   color: #333;
   font-family: Arial sans-serif;
   font-size: 2em;
   text-decoration: none;
-  /*padding: 0.5em 1.5em;*/
   padding: 0 0.1em;
 }
 
@@ -95,14 +106,14 @@
 }
 
 .tinder-chevron:after {
-  /*bottom: 0.56em;*/
   bottom: 0.36em;
   transform: rotate(45deg);
-}
+} */
 
 .phone-tinder-nav_profile {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .phone-tinder-nav_profile-img {
@@ -111,7 +122,7 @@
 }
 
 .phone-tinder-nav_profile-name {
-  padding-left: 7px;
+  color: #bbbbbb;
 }
 
 .phone-tinder-nav_dots {
@@ -140,10 +151,11 @@
 
 .sortable-list {
   width: 100%;
-height: 415px;
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
+  height: 415px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 8px;
 }
 
 .message-list-item {
@@ -152,14 +164,19 @@ justify-content: flex-end;
   white-space: pre-wrap;
   cursor: pointer;
   display: flex;
+  /* flex-direction: column; */
   align-items: flex-end;
   padding-bottom: 15px;
+}
+
+.message-list-item_from {
+  flex-direction: column;
 }
 
 .message-list-item_img {
   width: 40px;
   height: 40px;
-  margin: 0 8px;
+  margin-right: 8px;
 }
 
 .message-list-item-inner {
@@ -170,37 +187,58 @@ justify-content: flex-end;
  font-size: 14px;
 }
 
-.message-list-item_from {
+.message-list-item-inner_from {
   background-color: #E6E6E6;
   color: #000;
   width: 185px;
+  border-bottom-left-radius: 3px;
 }
 
-.message-list-item_to {
+.message-list-item-inner_to {
   width: 200px;
   margin-left: 74px;
-  background-color: #2EB1C9;
+  background-color: #13c6fe;
   color: #FFF;
+  border-bottom-right-radius: 3px;
 }
 
+.message-list-item_sent_text {
+  color: #bbbbbb;
+  font-size: 11px;
+}
+
+.heart-icon-container {
+  align-self: center;
+  width: 17%;
+  display: flex;
+  justify-content: flex-end;
+  color: #ededed;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.message-delete-btn {
+  position: absolute;
+  right: -85px;
+}
 
 /* START SEND MESSAGE INPUT */
 
 .phone-send-message-container {
   height: 50px;
   background: #FFF;
-  border-top: 1px solid #cecece;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  box-shadow: 0px -2px 6px 0px #f0f0f0;
 }
 
 .phone-send-message_gif {
   height: 35px;
-  width: 40px;
-  background-color: #2EB1C9;
+  width: 35px;
+  background-color: #31aeff;
   color: #FFF;
-  border-radius: 23%;
+  border-radius: 50%;
 }
 
 .phone-send-message_gif-icon {
@@ -210,11 +248,14 @@ justify-content: flex-end;
   align-items: center;
 }
 
-.phone-send-message_text-input {
-  color: #909090;
-  padding-right: 35px;
-}
-
-.phone-send-message_send-btn {
-  color: #909090;
+.phone-send-message-input-container {
+  display: flex;
+  background: #ececec;
+  height: 69%;
+  align-items: center;
+  padding: 0px 10px;
+  border-radius: 20px;
+  justify-content: space-between;
+  width: 80%;
+  color: #bbbbbb;
 }

@@ -13,7 +13,12 @@ const SortableMessageItem = SortableElement(({value, profileImage, onDelete, ind
       <div className={messageSenderReceiver === 'from' ? 'message-list-item-inner message-list-item_from' : 'message-list-item-inner message-list-item_to' }>
         {messageContents}
       </div>
-      <button onClick={onDelete(index, value)}>DELETE</button>
+      <button
+        className="btn btn-success message-delete-btn"
+        onClick={onDelete(index, value)}>
+        DELETE
+      </button>
+      index {index}
     </li>
   )
 });

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import html2canvas from 'html2canvas'
+// eslint-disable-next-line
 import rasterizehtml from 'rasterizehtml'
+// eslint-disable-next-line
 import OSComponent from './OS'
 import MatchName from './MatchName'
 import MatchImage from './MatchImage'
@@ -76,7 +78,7 @@ class Home extends Component {
 
   renderImage(event) {
     const messageList = document.querySelector('.phone-inner-container')
-    var canvas = document.getElementById("canvas");
+    // var canvas = document.getElementById("canvas");
     // rasterizeHTML.drawHTML(messageList, canvas)
     html2canvas(messageList).then(function(canvas) {
       document.body.appendChild(canvas);
