@@ -15,33 +15,33 @@ const Message = (props) => {
           onChange={props.onChange} />
       </div>
       <div className="form-group">
-        <label htmlFor="pasteImage" className="col-sm-12 control-label">Add Image</label>
-        <div className="">
-          <input type="text" className="form-control" id="pasteImage" placeholder="Paste URL Here" />
+        <div className="form-check">
+          <label className="col-sm-12 control-label">Message Sender / Receiver</label>
+          <label className="custom-control custom-radio">
+            <input
+              type="radio"
+              className="custom-control-input"
+              name="messageSenderReceiver"
+              id="MSR1"
+              required
+              value="to"
+              onChange={props.onChange} />
+            <span className="custom-control-indicator"></span>
+            <span className="custom-control-description">To</span>
+          </label>
+          <label className="custom-control custom-radio">
+            <input
+              type="radio"
+              className="custom-control-input"
+              name="messageSenderReceiver"
+              id="MSR1"
+              required
+              value="from"
+              onChange={props.onChange} />
+            <span className="custom-control-indicator"></span>
+            <span className="custom-control-description">From</span>
+          </label>
         </div>
-      </div>
-      <div className="form-group">
-        <label className="col-sm-12 control-label">Message Sender / Receiver</label>
-        <label className="radio-inline">
-          <input
-            type="radio"
-            name="messageSenderReceiver"
-            id="MSR1"
-            required
-            value="to"
-            onChange={props.onChange} />
-          To
-        </label>
-        <label className="radio-inline">
-          <input
-            type="radio"
-            name="messageSenderReceiver"
-            id="MSR1"
-            required
-            value="from"
-            onChange={props.onChange} />
-          From
-        </label>
       </div>
     </div>
   )

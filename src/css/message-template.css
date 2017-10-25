@@ -1,5 +1,7 @@
 .phone-container {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .phone-image {
@@ -12,10 +14,10 @@
   top: 97px;
   height: 536px;
   width: 304px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin: 0 auto;
   background: white;
-  right: 118px;
+  /* right: 118px; */
 }
 
 .phone-status-bar {
@@ -79,36 +81,6 @@
 .tinder-flag {
   padding-right: 5px;
 }
-/* .tinder-chevron {
-  position: relative;
-  color: #333;
-  font-family: Arial sans-serif;
-  font-size: 2em;
-  text-decoration: none;
-  padding: 0 0.1em;
-}
-
-.tinder-chevron:before,
-.tinder-chevron:after {
-  content: "";
-  background: #f16464;
-  border-radius: 0.1em;
-  display: block;
-  height: 0.8em;
-  position: absolute;
-  right: 0;
-  width: 0.2em;
-}
-
-.tinder-chevron:before {
-  transform: rotate(-45deg);
-  top: 0.35em;
-}
-
-.tinder-chevron:after {
-  bottom: 0.36em;
-  transform: rotate(45deg);
-} */
 
 .phone-tinder-nav_profile {
   display: flex;
@@ -119,6 +91,7 @@
 .phone-tinder-nav_profile-img {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
 }
 
 .phone-tinder-nav_profile-name {
@@ -177,6 +150,7 @@
   width: 40px;
   height: 40px;
   margin-right: 8px;
+  border-radius: 50%;
 }
 
 .message-list-item-inner {
@@ -219,7 +193,7 @@
 
 .message-delete-btn {
   position: absolute;
-  right: -85px;
+  right: -110px;
 }
 
 /* START SEND MESSAGE INPUT */
@@ -258,4 +232,42 @@
   justify-content: space-between;
   width: 80%;
   color: #bbbbbb;
+}
+
+.image-modal {
+  background-color: #ffffff;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+}
+
+.image-modal-overlay {
+  background-color: hsla(0, 0%, 50%, 0.82);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.image-modal-close {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 5px 0 0;
+}
+
+.image-modal-canvas-container {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.image-modal-canvas-container img {
+  border: 1px solid #000;
 }

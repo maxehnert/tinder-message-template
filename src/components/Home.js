@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import html2canvas from 'html2canvas'
 // eslint-disable-next-line
-import rasterizehtml from 'rasterizehtml'
-// eslint-disable-next-line
 import OSComponent from './OS'
 import MatchName from './MatchName'
 import MatchImage from './MatchImage'
 import Message from './Message'
 import MessageTemplate from './MessageTemplate'
+import ImageModal from './ImageModal'
+import MatchImageUploader from './MatchImageUploader'
 import { profileImage, addMessage } from '../actions'
 
 import girl_1 from '../images/pexels-photo-2.jpeg'
@@ -19,7 +19,7 @@ class Home extends Component {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.renderImage = this.renderImage.bind(this)
+    this.onFileChange = this.onFileChange.bind(this)
     this.messageConstructor = {}
   }
 
@@ -38,17 +38,40 @@ class Home extends Component {
   }
 
   handleChange(event) {
-    // console.log(event.target.name,event.target.value);
+    console.log(event.target.name, event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     })
     this.messageConstructor[event.target.name] = event.target.value
   }
 
+  onFileChange(event) {
+    const imageType = /^image\//
+    let file;
+
+    if (event.target.files && imageType.test(event.target.files[0].type)) {
+      file = window.URL.createObjectURL(event.target.files[0])
+    } else {
+      file = event.target.value
+    }
+
+    this.setState({
+      [event.target.name]: file
+    })
+    this.messageConstructor[event.target.name] = file
+
+    const imgPreview = document.querySelector('.upload-image-preview')
+    const img = imgPreview.firstElementChild
+
+    img.src = file
+    img.style.display = 'initial'
+  }
+
   handleSubmit(event) {
     event.preventDefault()
     // console.log('submit event', event, event.target);
-    var matchImage = !this.messageConstructor.matchImage ? this.state.matchImage : this.messageConstructor.matchImage
+    const whichMatchImage = this.messageConstructor.matchImageUploader || this.messageConstructor.matchImage
+    var matchImage = !whichMatchImage ? this.state.matchImage : whichMatchImage
     var messageSenderReceiver = !this.messageConstructor.messageSenderReceiver ? this.state.messageSenderReceiver : this.messageConstructor.messageSenderReceiver
     this.messageConstructor.matchImage = matchImage
     this.messageConstructor.messageSenderReceiver = messageSenderReceiver
@@ -76,34 +99,35 @@ class Home extends Component {
 // console.log('messageConstructor', this.messageConstructor);
   }
 
-  renderImage(event) {
-    const messageList = document.querySelector('.phone-inner-container')
-    // var canvas = document.getElementById("canvas");
-    // rasterizeHTML.drawHTML(messageList, canvas)
-    html2canvas(messageList).then(function(canvas) {
-      document.body.appendChild(canvas);
-    });
-  }
-
   render() {
     return (
-      <div className="row container">
-        <form className="col-sm-12 col-md-4 message-form" onSubmit={this.handleSubmit}>
-          {/* <OSComponent onChange={this.handleChange} /> */}
-          <MatchName value={this.state} onChange={this.handleChange} />
-          <MatchImage value={this.state} onChange={this.handleChange} />
-          <Message value={this.state} onChange={this.handleChange} />
-          <button
-            type="submit"
-            className="btn btn-success">
-            Add Message
-          </button>
-        </form>
-        <button onClick={this.renderImage}>Make Image</button>
-        <div className="col-sm-12 col-md-6">
-          <MessageTemplate value={this.state} />
+      <div>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-sm-12 col-md-4 no-gutters">
+            <form className="message-form" onSubmit={this.handleSubmit}>
+              {/* <OSComponent onChange={this.handleChange} /> */}
+              <MatchName value={this.state} onChange={this.handleChange} />
+              <Message value={this.state} onChange={this.handleChange} />
+              <MatchImageUploader value={this.state} onChange={this.onFileChange} />
+              <MatchImage value={this.state} onChange={this.handleChange} />
+              <button
+                type="submit"
+                className="btn btn-success">
+                Add Message
+              </button>
+            </form>
+            </div>
+            {/** <div className="col-sm-12 col-md-6 no-gutters">
+          </div>**/}
+            <div className="col-sm-12 col-md-8 no-gutters">
+              <div>
+                <ImageModal {...this.props} />
+              </div>
+              <MessageTemplate value={this.state} />
+            </div>
+          </div>
         </div>
-        <canvas id="canvas"></canvas>
       </div>
     )
   }

@@ -5,3 +5,37 @@
 .message-form {
   margin: 10px 0 0 10px;
 }
+
+.upload-image-preview img {
+  border-radius: 50%;
+  display: none;
+  height: 40px;
+  width: 40px;
+}
+
+.match-image-uploader_link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.accordion .header {
+  display:block;
+  margin:0 0 .25em;
+  padding:.25em 1em;
+  /* background:#f4f4f4; */
+  /* border:1px solid #ddd; */
+  cursor:pointer;
+}
+
+.accordion .header:target {
+  border-color:#666;
+}
+
+.accordion article {
+  display: none;
+  padding:0 1em 1em;
+}
+
+.accordion .header:target + article {
+  display: block;
+}
