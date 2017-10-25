@@ -22,6 +22,32 @@ class ImageModal extends Component {
   handleCloseModal () {
     this.setState({ showModal: false });
   }
+  
+  share() {
+    const canvasImg = document.querySelector('.canvas-generated-image')
+    const form = new FormData()
+
+    // Have to do a split because the API expects only the base64 hash
+    form.append("image", canvasImg.src.split('data:image/png;base64,')[1])
+
+    const settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://api.imgur.com/3/image",
+      "method": "POST",
+      "headers": {
+        "authorization": "Client-ID 87308210009d294"
+      },
+      "processData": false,
+      "contentType": false,
+      "mimeType": "multipart/form-data",
+      "body": form
+    }
+
+    fetch("https://api.imgur.com/3/image", settings).then(function(response) {
+      return response.blob()
+    })
+  }
 
   renderImage(event) {
     const messageList = document.querySelector('.phone-inner-container')
@@ -31,13 +57,15 @@ class ImageModal extends Component {
       context['oImageSmoothingEnabled'] = false
       context['webkitImageSmoothingEnabled'] = false
       context['msImageSmoothingEnabled'] = false
-      }
+    }
     html2canvas(messageList, {
       onrendered: function (canvas) {
         setpixelated(canvas.getContext('2d')); // For More Clear Images in all browsers
+
         const modalBody = document.querySelector('.image-modal-canvas-container')
-        var image = new Image()
-        image.id = "pic"
+        const image = new Image()
+
+        image.className = "canvas-generated-image"
         image.src = canvas.toDataURL('image/png', 1.0)
         image.setAttribute('crossOrigin','anonymous')
         modalBody.appendChild(image)
@@ -59,6 +87,7 @@ class ImageModal extends Component {
            className="image-modal"
            overlayClassName="image-modal-overlay"
         >
+        <div id="share" onClick={this.share}>share</div>
           <div 
             className="image-modal-close"
             onClick={this.handleCloseModal}>
