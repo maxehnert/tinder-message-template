@@ -235,12 +235,12 @@
 }
 
 .image-modal {
-  background-color: #ffffff;
+  background-color: #d9d9d9;
   position: absolute;
   top: 40px;
   left: 40px;
   right: 40px;
-  bottom: 40px;
+  padding-bottom: 40px;
 }
 
 .image-modal-overlay {
@@ -257,17 +257,25 @@
 }
 
 .image-modal-close {
+  position: absolute;
+  right: 0;
+  top: 0;
   display: flex;
   justify-content: flex-end;
   padding: 5px 5px 0 0;
 }
 
+.image-modal-header {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.imgur-generated-link-container {
+  /* min-height: 16px; */
+}
+
 .image-modal-canvas-container {
   display: flex;
   justify-content: center;
-  
-}
-
-.image-modal-canvas-container img {
-  border: 1px solid #000;
 }

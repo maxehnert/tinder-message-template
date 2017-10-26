@@ -6,12 +6,14 @@ class ImageModal extends Component {
   constructor () {
     super();
     this.state = {
-      showModal: false
+      showModal: false,
+      imgurLink: ''
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.renderImage = this.renderImage.bind(this);
+    this.handleImgurPost = this.handleImgurPost.bind(this);
   }
 
   handleOpenModal () {
@@ -22,13 +24,13 @@ class ImageModal extends Component {
   handleCloseModal () {
     this.setState({ showModal: false });
   }
-  
-  share() {
-    const canvasImg = document.querySelector('.canvas-generated-image')
-    const form = new FormData()
+
+  handleImgurPost() {
+    const canvasImg = document.querySelector('.canvas-generated-image');
+    const form = new FormData();
 
     // Have to do a split because the API expects only the base64 hash
-    form.append("image", canvasImg.src.split('data:image/png;base64,')[1])
+    form.append("image", canvasImg.src.split('data:image/png;base64,')[1]);
 
     const settings = {
       "async": true,
@@ -42,11 +44,14 @@ class ImageModal extends Component {
       "contentType": false,
       "mimeType": "multipart/form-data",
       "body": form
-    }
+    };
 
-    fetch("https://api.imgur.com/3/image", settings).then(function(response) {
-      return response.blob()
-    })
+    fetch("https://api.imgur.com/3/image", settings).then((response) => response.json())
+      .then((json) => {
+        const {data} = json;
+        console.log(json)
+        this.setState({imgurLink: data.link});
+      });
   }
 
   renderImage(event) {
@@ -58,6 +63,7 @@ class ImageModal extends Component {
       context['webkitImageSmoothingEnabled'] = false
       context['msImageSmoothingEnabled'] = false
     }
+
     html2canvas(messageList, {
       onrendered: function (canvas) {
         setpixelated(canvas.getContext('2d')); // For More Clear Images in all browsers
@@ -87,11 +93,23 @@ class ImageModal extends Component {
            className="image-modal"
            overlayClassName="image-modal-overlay"
         >
-        <div id="share" onClick={this.share}>share</div>
-          <div 
-            className="image-modal-close"
-            onClick={this.handleCloseModal}>
-            <i className="fa fa-times" aria-hidden="true"></i>
+          <div className="image-modal-header">
+            <button
+              className="btn btn-sm btn-outline-primary"
+              onClick={this.handleImgurPost}>Post to imgur
+            </button>
+            {{/** 
+            on click to post to Imgur, hide the btn and show the link. 
+            This will save vertical space and will prevent people from just spamming the btn
+            **/}}
+            <div
+              className="image-modal-close"
+              onClick={this.handleCloseModal}>
+              <i className="fa fa-times" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div className="imgur-generated-link-container">
+            <a href="">www</a>
           </div>
           <div className="image-modal-canvas-container"></div>
         </ReactModal>
