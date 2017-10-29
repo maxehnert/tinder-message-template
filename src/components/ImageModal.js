@@ -98,7 +98,7 @@ class ImageModal extends Component {
         >
           <div className="image-modal-header">
           {this.state.imgurLink.length ?
-            <a href={this.state.imgurLink}>{this.state.imgurLink} target="_blank"</a> :
+            <a href={this.state.imgurLink} target="_blank">{this.state.imgurLink}</a> :
             <button
               className="btn btn-sm btn-outline-primary"
               onClick={this.handleImgurPost}>Post to imgur

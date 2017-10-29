@@ -120,7 +120,7 @@ class Home extends Component {
             </div>
             {/** <div className="col-sm-12 col-md-6 no-gutters">
           </div>**/}
-            <div className="col-sm-12 col-md-8 no-gutters">
+            <div className="col-sm-12 col-md-8 no-gutters phone-and-img-gen-container">
               <div>
                 <ImageModal {...this.props} />
               </div>
