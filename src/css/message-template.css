@@ -257,6 +257,7 @@
 }
 
 .image-modal-close {
+  cursor: pointer;
   position: absolute;
   right: 0;
   top: 0;
@@ -268,11 +269,7 @@
 .image-modal-header {
   display: flex;
   justify-content: center;
-  padding-top: 10px;
-}
-
-.imgur-generated-link-container {
-  /* min-height: 16px; */
+  padding: 15px 0 10px 0;
 }
 
 .image-modal-canvas-container {

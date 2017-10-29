@@ -22,7 +22,10 @@ class ImageModal extends Component {
   }
 
   handleCloseModal () {
-    this.setState({ showModal: false });
+    this.setState({ 
+      showModal: false,
+      imgurLink: ''
+     });
   }
 
   handleImgurPost() {
@@ -94,23 +97,26 @@ class ImageModal extends Component {
            overlayClassName="image-modal-overlay"
         >
           <div className="image-modal-header">
+          {this.state.imgurLink.length ?
+            <a href={this.state.imgurLink}>{this.state.imgurLink} target="_blank"</a> :
             <button
               className="btn btn-sm btn-outline-primary"
               onClick={this.handleImgurPost}>Post to imgur
             </button>
-            {{/** 
+          }
+            {/** 
             on click to post to Imgur, hide the btn and show the link. 
             This will save vertical space and will prevent people from just spamming the btn
-            **/}}
+            **/}
             <div
               className="image-modal-close"
               onClick={this.handleCloseModal}>
               <i className="fa fa-times" aria-hidden="true"></i>
             </div>
           </div>
-          <div className="imgur-generated-link-container">
+          {/**<div className="imgur-generated-link-container">
             <a href="">www</a>
-          </div>
+          </div>**/}
           <div className="image-modal-canvas-container"></div>
         </ReactModal>
       </div>
