@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import html2canvas from 'html2canvas'
-// eslint-disable-next-line
 import OSComponent from './OS'
 import MatchName from './MatchName'
 import MatchImage from './MatchImage'
@@ -10,7 +8,7 @@ import MessageTemplate from './MessageTemplate'
 import ImageModal from './ImageModal'
 import MatchImageUploader from './MatchImageUploader'
 import { profileImage, addMessage } from '../actions'
-
+import {PanelGroup, Panel} from 'react-bootstrap'
 import girl_1 from '../images/pexels-photo-2.jpeg'
 
 
@@ -107,10 +105,16 @@ class Home extends Component {
             <div className="col-sm-12 col-md-4 no-gutters">
             <form className="message-form" onSubmit={this.handleSubmit}>
               {/* <OSComponent onChange={this.handleChange} /> */}
-              <MatchName value={this.state} onChange={this.handleChange} />
-              <Message value={this.state} onChange={this.handleChange} />
-              <MatchImageUploader value={this.state} onChange={this.onFileChange} />
-              <MatchImage value={this.state} onChange={this.handleChange} />
+              <PanelGroup>
+              <Panel collapsible header="Create Message" eventKey="1">
+                <MatchName value={this.state} onChange={this.handleChange} />
+                <Message value={this.state} onChange={this.handleChange} />
+              </Panel>
+              <Panel collapsible header="Add Image" eventKey="2">
+                <MatchImageUploader value={this.state} onChange={this.onFileChange} />
+                <MatchImage value={this.state} onChange={this.handleChange} />
+              </Panel>
+              </PanelGroup>
               <button
                 type="submit"
                 className="btn btn-success">

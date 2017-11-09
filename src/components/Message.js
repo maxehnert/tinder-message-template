@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {FormGroup, Radio} from 'react-bootstrap'
 const Message = (props) => {
   return (
     <div>
@@ -17,30 +17,27 @@ const Message = (props) => {
       <div className="form-group">
         <div className="form-check">
           <label className="col-sm-12 control-label">Message Sender / Receiver</label>
-          <label className="custom-control custom-radio">
-            <input
-              type="radio"
-              className="custom-control-input"
+          <FormGroup>
+            <Radio
               name="messageSenderReceiver"
-              id="MSR1"
+              inline
               required
               value="to"
-              onChange={props.onChange} />
-            <span className="custom-control-indicator"></span>
-            <span className="custom-control-description">To</span>
-          </label>
-          <label className="custom-control custom-radio">
-            <input
-              type="radio"
-              className="custom-control-input"
+              onChange={props.onChange}
+              >
+              To
+            </Radio>
+            {' '}
+            <Radio
               name="messageSenderReceiver"
-              id="MSR1"
+              inline
               required
               value="from"
-              onChange={props.onChange} />
-            <span className="custom-control-indicator"></span>
-            <span className="custom-control-description">From</span>
-          </label>
+              onChange={props.onChange}
+              >
+              From
+            </Radio>
+          </FormGroup>
         </div>
       </div>
     </div>

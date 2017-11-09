@@ -7,7 +7,7 @@ import reducer from './reducers'
 
 import { App } from './components/index'
 
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/index.css';
 
 /**
