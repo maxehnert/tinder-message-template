@@ -16,3 +16,11 @@ export const deleteMessage = (value, index) => ({
   id: value.id,
   index: index
 })
+
+export const phoneStatus = (value) => ({
+  type: 'SET_PHONE_STATUS',
+  phoneBatteryPercent: value.phoneBatteryPercent,
+  phoneServiceProvider: value.phoneServiceProvider,
+  phoneTime: value.phoneTime,
+  AmPm: value.AmPm
+})

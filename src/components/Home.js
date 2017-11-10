@@ -1,24 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import OSComponent from './OS'
-import MatchName from './MatchName'
+import ImageModal from './ImageModal'
 import MatchImage from './MatchImage'
+import MatchImageUploader from './MatchImageUploader'
+import MatchName from './MatchName'
 import Message from './Message'
 import MessageTemplate from './MessageTemplate'
-import ImageModal from './ImageModal'
-import MatchImageUploader from './MatchImageUploader'
-import { profileImage, addMessage } from '../actions'
+// import OSComponent from './OS'
+import StatusBar from './StatusBar'
+import { profileImage, addMessage, phoneStatus } from '../actions'
 import {PanelGroup, Panel} from 'react-bootstrap'
 import girl_1 from '../images/pexels-photo-2.jpeg'
-
 
 class Home extends Component {
   constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handlePhoneStatusChange = this.handlePhoneStatusChange.bind(this)
     this.onFileChange = this.onFileChange.bind(this)
     this.messageConstructor = {}
+    this.phoneStatusConstructor = {}
   }
 
   componentWillMount() {
@@ -27,20 +29,28 @@ class Home extends Component {
       matchImage: girl_1,
       matchName: "",
       messageContents: "",
-      phoneBatteryPercent: "",
-      phoneSignalStrength: "",
-      phoneServiceProvider: "",
       messageSenderReceiver: "",
-      messages: []
+      messages: [],
+      phoneBatteryPercent: "78",
+      phoneServiceProvider: "AT&T",
+      phoneTime: "7:43",
+      AmPm: "PM"
     })
   }
 
   handleChange(event) {
-    console.log(event.target.name, event.target.value);
+    // console.log(event.target.name, event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     })
     this.messageConstructor[event.target.name] = event.target.value
+  }
+
+  handlePhoneStatusChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+    this.phoneStatusConstructor[event.target.name] = event.target.value
   }
 
   onFileChange(event) {
@@ -69,29 +79,36 @@ class Home extends Component {
     event.preventDefault()
     // console.log('submit event', event, event.target);
     const whichMatchImage = this.messageConstructor.matchImageUploader || this.messageConstructor.matchImage
-    var matchImage = !whichMatchImage ? this.state.matchImage : whichMatchImage
-    var messageSenderReceiver = !this.messageConstructor.messageSenderReceiver ? this.state.messageSenderReceiver : this.messageConstructor.messageSenderReceiver
+    const matchImage = !whichMatchImage ? this.state.matchImage : whichMatchImage
+    const messageSenderReceiver = !this.messageConstructor.messageSenderReceiver ? this.state.messageSenderReceiver : this.messageConstructor.messageSenderReceiver
     this.messageConstructor.matchImage = matchImage
     this.messageConstructor.messageSenderReceiver = messageSenderReceiver
-
     this.state.messages.push(this.messageConstructor)
-    var newMsgArr = this.state.messages
+    const newMsgArr = this.state.messages
 
+    const phoneServiceProvider = this.phoneStatusConstructor.phoneServiceProvider || this.state.phoneServiceProvider
+    const phoneTime = this.phoneStatusConstructor.phoneTime || this.state.phoneTime
+    const AmPm = this.phoneStatusConstructor.AmPm || this.state.AmPm
+    const phoneBatteryPercent = this.phoneStatusConstructor.phoneBatteryPercent || this.state.phoneBatteryPercent
+    
     this.setState({
       // OSType: "",
-      matchImage: matchImage,
+      matchImage,
       // matchName: "",
       messageContents: "",
-      // phoneBatteryPercent: "",
-      // phoneSignalStrength: "",
-      // phoneServiceProvider: "",
+      phoneBatteryPercent,
+      phoneServiceProvider,
+      phoneTime,
+      AmPm,
       messages: newMsgArr
     })
 
     this.props.dispatch(addMessage(this.messageConstructor))
     this.props.dispatch(profileImage(matchImage))
+    this.props.dispatch(phoneStatus(this.phoneStatusConstructor))
 
     this.messageConstructor = {};
+    this.phoneStatusConstructor = {};
 
 // console.log('state', this.state);
 // console.log('messageConstructor', this.messageConstructor);
@@ -113,6 +130,9 @@ class Home extends Component {
               <Panel collapsible header="Add Image" eventKey="2">
                 <MatchImageUploader value={this.state} onChange={this.onFileChange} />
                 <MatchImage value={this.state} onChange={this.handleChange} />
+              </Panel>
+              <Panel collapsible header="Change Phone Status" eventKey="3">
+                <StatusBar value={this.state} onChange={this.handlePhoneStatusChange} />
               </Panel>
               </PanelGroup>
               <button
